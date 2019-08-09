@@ -56,7 +56,7 @@
             class="mx-auto"
           >
             <v-icon id="icon_key">mdi-account-key</v-icon>
-            <v-btn text id="btn_password">비밀번호 변경</v-btn>
+            <v-btn text id="btn_password" to="/pswChange" nuxt>비밀번호 변경</v-btn>
           </v-card>
         </div>
 
