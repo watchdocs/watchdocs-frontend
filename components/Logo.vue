@@ -1,79 +1,48 @@
 <template>
-  <div class="VueToNuxtLogo">
-    <div class="Triangle Triangle--two" />
-    <div class="Triangle Triangle--one" />
-    <div class="Triangle Triangle--three" />
-    <div class="Triangle Triangle--four" />
-  </div>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122 122" :height="size">
+    <rect
+      fill="none"
+      :stroke="color"
+      stroke-miterlimit="10"
+      stroke-width="8px"
+      x="4"
+      y="4"
+      width="114"
+      height="114"
+      rx="11.34"
+    />
+    <path
+      :fill="color"
+      d="M95.27 42.2a8.67 8.67 0 0 0-11-8.36 8.3 8.3 0 0 0-5 3.74 8.7 8.7 0 0 0 1 10.42l-9.68 27.84L67.17 66h-8l10.49-28h-8.95l-1.65 4.71L57.42 38h-9l6.38 17-7.3 21-13.2-38h-9l19.15 51h5.84l8.61-22.91L67.5 89h6.17l14.38-38.24a8.65 8.65 0 0 0 7.22-8.56zm-8.8 5.52A5.55 5.55 0 1 1 92 42.17a5.56 5.56 0 0 1-5.53 5.55z"
+    />
+  </svg>
 </template>
 
 <style>
-.VueToNuxtLogo {
-  display: inline-block;
-  animation: turn 2s linear forwards 1s;
-  transform: rotateX(180deg);
-  position: relative;
-  overflow: hidden;
-  height: 180px;
-  width: 245px;
+.watchdocs-logo {
+  fill: white;
 }
 
-.Triangle {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 0;
-}
-
-.Triangle--one {
-  border-left: 105px solid transparent;
-  border-right: 105px solid transparent;
-  border-bottom: 180px solid #41b883;
-}
-
-.Triangle--two {
-  top: 30px;
-  left: 35px;
-  animation: goright 0.5s linear forwards 3.5s;
-  border-left: 87.5px solid transparent;
-  border-right: 87.5px solid transparent;
-  border-bottom: 150px solid #3b8070;
-}
-
-.Triangle--three {
-  top: 60px;
-  left: 35px;
-  animation: goright 0.5s linear forwards 3.5s;
-  border-left: 70px solid transparent;
-  border-right: 70px solid transparent;
-  border-bottom: 120px solid #35495e;
-}
-
-.Triangle--four {
-  top: 120px;
-  left: 70px;
-  animation: godown 0.5s linear forwards 3s;
-  border-left: 35px solid transparent;
-  border-right: 35px solid transparent;
-  border-bottom: 60px solid #fff;
-}
-
-@keyframes turn {
-  100% {
-    transform: rotateX(0deg);
-  }
-}
-
-@keyframes godown {
-  100% {
-    top: 180px;
-  }
-}
-
-@keyframes goright {
-  100% {
-    left: 70px;
-  }
+.watchdocs-logo-stroke {
+  fill: none;
+  stroke: white;
+  stroke-miterlimit: 10;
+  stroke-width: 8px;
 }
 </style>
+
+<script>
+export default {
+  name: 'Logo',
+  props: {
+    color: {
+      type: String,
+      default: 'white'
+    },
+    size: {
+      type: String,
+      default: '80px'
+    }
+  }
+}
+</script>
