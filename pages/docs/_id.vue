@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container grid-list-md>
     <strong>
       <h1 class="display-1" style="margin-top:20px">(문서제목)</h1>
     </strong>
@@ -7,9 +7,9 @@
     <h4 class="subtitle-1">(문서버전)</h4>
     <h4 class="subtitle-1">(최근수정자),(최근수정시간)</h4>
     <br />
-    <v-layout>
-      <v-flex xs12 md8>
-        <v-card>
+    <v-layout wrap>
+      <v-flex xs12 sm8>
+        <v-card flat>
           <v-card-text>
             <p class="text-sm-left">
               (문서 내용)Left align on small viewport sizesLeft align on small
@@ -19,8 +19,7 @@
           </v-card-text>
         </v-card>
       </v-flex>
-
-      <v-flex xs12 md4 mx-2>
+      <v-flex xs12 sm4>
         <v-card flat>
           <v-list-item>
             <v-icon style="font-size: 25px; margin-right:30px;"
@@ -123,8 +122,5 @@ export default {
 <style>
 .btn_export {
   margin: 30px;
-}
-.text-center {
-  margin: 50px;
 }
 </style>
