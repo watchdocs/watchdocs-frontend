@@ -1,6 +1,8 @@
 <template>
   <v-container>
-    <h1 class="display-1">(문서제목)</h1>
+    <strong>
+      <h1 class="display-1" style="margin-top:20px">(문서제목)</h1>
+    </strong>
     <br />
     <h4 class="subtitle-1">(문서버전)</h4>
     <h4 class="subtitle-1">(최근수정자),(최근수정시간)</h4>
@@ -18,7 +20,7 @@
       <v-flex xs12 md4 mx-2>
         <v-card flat>
           <v-list-item>
-            <v-list-item-avatar color="grey"></v-list-item-avatar>
+            <v-icon style="font-size: 25px; margin-right:30px;">mdi-account-circle</v-icon>
             <v-list-item-content>
               <v-list-item-title class="headline">{{
                 author.name
