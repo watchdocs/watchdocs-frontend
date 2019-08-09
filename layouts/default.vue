@@ -23,11 +23,10 @@
 
       <v-spacer></v-spacer>
 
-      <nuxt-link to="/account">
-        <v-btn icon>
+      
+        <v-btn icon to="/account" nuxt>
           <v-icon>mdi-account-circle</v-icon>
         </v-btn>
-      </nuxt-link>
 
     </v-app-bar>
 
