@@ -1,9 +1,9 @@
 <template>
   <v-app id="inspire">
     <v-app-bar app clipped-left>
-      <logo size="24px"></logo>
+      <logo size="24px" color="black"></logo>
       <v-toolbar-title style="width: 180px" class="ml-0 pl-4">
-        <nuxt-link to="/" style="text-decoration:none; color:white"
+        <nuxt-link to="/" style="text-decoration:none; color:black"
           >WatchDocs</nuxt-link
         >
       </v-toolbar-title>
