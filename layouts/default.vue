@@ -34,7 +34,7 @@
     </v-content>
 
     <v-footer app>
-      <span>&copy; 2019</span>
+      <span>&copy; 2019 Team_Gazua Republic of Korea</span>
     </v-footer>
   </v-app>
 </template>
