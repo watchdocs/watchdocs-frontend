@@ -1,46 +1,60 @@
 <template>
   <v-container>
-    <v-layout column justify-center align-center>
-      <v-flex xs12 sm8 md6>
-        <div class="text-center">
-          <logo />
-          <vuetify-logo />
-        </div>
-        <v-card>
-          <v-card-title class="headline">Welcome to the Vuetify + Nuxt.js template</v-card-title>
-          <v-card-text>
-            <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-            <p>
-              For more information on Vuetify, check out the
-              <a href="https://vuetifyjs.com" target="_blank">documentation</a>.
-            </p>
-            <p>
-              If you have questions, please join the official
-              <a href="https://chat.vuetifyjs.com/" target="_blank" title="chat">discord</a>.
-            </p>
-            <p>
-              Find a bug? Report it on the github
-              <a
-                href="https://github.com/vuetifyjs/vuetify/issues"
-                target="_blank"
-                title="contribute"
-              >issue board</a>.
-            </p>
-            <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-            <div class="text-xs-right">
-              <em>
-                <small>&mdash; John Leider</small>
-              </em>
-            </div>
-            <hr class="my-3" />
-            <a href="https://nuxtjs.org/" target="_blank">Nuxt Documentation</a>
-            <br />
-            <a href="https://github.com/nuxt/nuxt.js" target="_blank">Nuxt GitHub</a>
-          </v-card-text>
-          <v-card-actions>
-            <v-spacer />
-            <v-btn color="primary" nuxt to="/inspire">Continue</v-btn>
-          </v-card-actions>
+    <h1 class="display-1">Documents</h1>
+    <h4 class="subtitle-1">Your Files</h4>
+    <br />
+    <v-layout>
+      <v-flex xs12 md8>
+        <v-data-table
+          class="files"
+          :headers="headers"
+          :items="currentDirectory"
+          @click:row="move"
+        >
+          <template v-slot:item.author="{ item }">
+            <span @mouseover="updateAuthor(item)">{{ item.author }}</span>
+          </template>
+        </v-data-table>
+      </v-flex>
+      <v-flex xs12 md4 mx-2>
+        <v-card v-if="currentAuthor" flat>
+          <v-list-item>
+            <v-list-item-avatar color="grey"></v-list-item-avatar>
+            <v-list-item-content>
+              <v-list-item-title class="headline">
+                {{ currentAuthor.name }}
+              </v-list-item-title>
+              <v-list-item-subtitle
+                >@{{ currentAuthor.id }}</v-list-item-subtitle
+              >
+            </v-list-item-content>
+          </v-list-item>
+          <v-list two-line>
+            <v-list-item-group>
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon>mdi-card-text</v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <v-list-item-title>Department</v-list-item-title>
+                  <v-list-item-subtitle>
+                    {{ currentAuthor.department }}
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+              <v-list-item>
+                <v-list-item-icon>
+                  <v-icon>mdi-chevron-triple-up</v-icon>
+                </v-list-item-icon>
+                <v-list-item-content>
+                  <v-list-item-title>Position</v-list-item-title>
+                  <v-list-item-subtitle>
+                    {{ currentAuthor.position }}
+                  </v-list-item-subtitle>
+                </v-list-item-content>
+              </v-list-item>
+            </v-list-item-group>
+          </v-list>
         </v-card>
       </v-flex>
     </v-layout>
@@ -48,13 +62,99 @@
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
-
 export default {
-  components: {
-    Logo,
-    VuetifyLogo
+  data() {
+    return {
+      headers: [
+        { text: 'File Name', value: 'name' },
+        { text: 'Modified Date', value: 'modified' },
+        { text: 'Author', value: 'author' }
+      ],
+      currentAuthor: null,
+      currentDirectory: [
+        {
+          id: 1,
+          name: 'Directory/',
+          modified: '1 min ago'
+        },
+        {
+          id: 1,
+          name: 'File',
+          author: 'SJ Park',
+          authorId: 1,
+          modified: '1 min ago'
+        },
+        {
+          id: 1,
+          name: 'File',
+          author: 'SJ Park',
+          authorId: 1,
+          modified: '1 min ago'
+        },
+        {
+          id: 1,
+          name: 'File',
+          author: 'SJ Park',
+          authorId: 1,
+          modified: '1 min ago'
+        },
+        {
+          id: 1,
+          name: 'File',
+          author: 'SJ Park',
+          authorId: 1,
+          modified: '1 min ago'
+        },
+        {
+          id: 1,
+          name: 'File',
+          author: 'SJ Park',
+          authorId: 1,
+          modified: '1 min ago'
+        },
+        {
+          id: 1,
+          name: 'File',
+          author: 'SJ Park',
+          authorId: 1,
+          modified: '1 min ago'
+        },
+        {
+          id: 1,
+          name: 'File',
+          author: 'SJ Park',
+          authorId: 1,
+          modified: '1 min ago'
+        },
+        {
+          id: 1,
+          name: 'File',
+          author: 'SJ Park',
+          authorId: 1,
+          modified: '1 min ago'
+        },
+        {
+          id: 1,
+          name: 'File',
+          author: 'SJ Park',
+          authorId: 1,
+          modified: '1 min ago'
+        }
+      ]
+    }
+  },
+  methods: {
+    async move(row) {
+      const files = await this.$axios.$get(`/dirs/${row.id}`)
+      this.currentDirectory = files
+    },
+    async updateAuthor(row) {
+      console.log(row)
+      const author = await this.$axios.$get(
+        `http://localhost/authors/${row.authorId}`
+      )
+      this.currentAuthor = author
+    }
   }
 }
 </script>

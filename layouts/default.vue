@@ -1,15 +1,12 @@
 <template>
   <v-app id="inspire">
-    <v-app-bar
-      app
-      clipped-left
-    >
+    <v-app-bar app clipped-left>
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>WatchDocs</v-toolbar-title>
     </v-app-bar>
 
     <v-content>
-      <nuxt/>
+      <nuxt />
     </v-content>
 
     <v-footer app>
@@ -19,15 +16,12 @@
 </template>
 
 <script>
-  export default {
-    props: {
-      source: String,
-    },
-    data: () => ({
-      drawer: null,
-    }),
-    created () {
-      //this.$vuetify.theme.dark = true
-    },
+export default {
+  data: () => ({
+    drawer: null
+  }),
+  created() {
+    // this.$vuetify.theme.dark = true
   }
+}
 </script>
