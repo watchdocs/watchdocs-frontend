@@ -19,6 +19,10 @@
 
     <v-spacer></v-spacer>
 
+    <v-btn icon to="/upload" nuxt>
+      <v-icon>mdi-upload</v-icon>
+    </v-btn>
+
     <v-btn v-if="true" icon to="/account" nuxt>
       <v-icon>mdi-account-circle</v-icon>
     </v-btn>
