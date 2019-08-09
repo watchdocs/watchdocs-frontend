@@ -19,7 +19,7 @@
 
     <v-spacer></v-spacer>
 
-      <v-btn icon v-if="false" to="/account" nuxt>
+      <v-btn icon v-if="true" to="/account" nuxt>
         <v-icon>mdi-account-circle</v-icon>
       </v-btn>
       <v-btn v-else style="margin-right:40px;" to="/login" nuxt>Login</v-btn>
