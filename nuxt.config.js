@@ -1,7 +1,7 @@
 import colors from 'vuetify/es5/util/colors'
 
 const NAME = 'WATCH_DOCS'
-const DESCRIPTION = 'Document Management Service for Company'
+const DESCRIPTION = 'Document Management Service for Business'
 const BASE_URL = '/'
 const PRIMARY_COLOR = '#632a7e'
 const SECONDARY_COLOR = '#a13e97'

@@ -3,7 +3,7 @@
     <v-card class="flex" flat tile>
       <v-card-text class="primary">
         <v-layout justify-space-between>
-          <strong>Document Management Service for Company</strong>
+          <strong>Document Management Service for Business</strong>
           <a class="view-on-github" href="https://github.com/watchdocs">
             View on
             <span class="github">GitHub</span>
