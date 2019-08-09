@@ -4,8 +4,29 @@
       app
       clipped-left
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>WatchDocs</v-toolbar-title>
+      <logo size="24px"></logo>
+      <v-toolbar-title style="width: 180px" class="ml-0 pl-4">
+        <nuxt-link to="/" style="text-decoration:none; color:white">
+          WatchDocs
+        </nuxt-link>
+      </v-toolbar-title>
+      
+       <v-text-field
+        flat
+        solo-inverted
+        hide-details
+        prepend-inner-icon="mdi-magnify"
+        label="Search"
+        class="hidden-sm-and-down"
+        style="width: 500px"
+      ></v-text-field>
+
+      <v-spacer></v-spacer>
+
+      <v-btn icon @click="">
+        <v-icon>mdi-account-circle</v-icon>
+      </v-btn>
+
     </v-app-bar>
 
     <v-content>
@@ -19,7 +40,12 @@
 </template>
 
 <script>
+  import Logo from "@/components/Logo.vue"
+
   export default {
+    components: {
+      Logo
+    },
     props: {
       source: String,
     },
