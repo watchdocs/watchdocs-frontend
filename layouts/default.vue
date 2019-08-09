@@ -23,9 +23,11 @@
 
       <v-spacer></v-spacer>
 
-      <v-btn icon @click="">
-        <v-icon>mdi-account-circle</v-icon>
-      </v-btn>
+      <nuxt-link to="/account">
+        <v-btn icon>
+          <v-icon>mdi-account-circle</v-icon>
+        </v-btn>
+      </nuxt-link>
 
     </v-app-bar>
 
