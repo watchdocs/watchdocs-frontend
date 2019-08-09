@@ -17,9 +17,6 @@ export default {
     WatchdocsFooter,
     WatchdocsHeader
   },
-  props: {
-    source: String
-  },
   data: () => ({
     drawer: null
   }),
