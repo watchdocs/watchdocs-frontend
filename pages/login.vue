@@ -14,13 +14,7 @@
           </div>
 
           <v-flex>
-            <v-text-field
-              v-model="id"
-              :rules="rules"
-              counter="25"
-              hint="ID"
-              label="ID를 입력하세요."
-            ></v-text-field>
+            <v-text-field v-model="id" :rules="rules" counter="25" hint="ID" label="ID를 입력하세요."></v-text-field>
           </v-flex>
 
           <v-flex class="psw">
@@ -89,7 +83,7 @@ export default {
         password: this.password
       })
       if (data) {
-        // User.token = data
+        document.cookie = 'token='+data
         window.location.href = '/'
       }
     }

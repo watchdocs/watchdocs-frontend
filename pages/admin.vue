@@ -183,10 +183,9 @@ export default {
     }
   },
   async created() {
-    console.log('User.token', User.token)
     const { data } = await this.$axios.$get('/users', {
       headers: {
-        'x-access-token': User.token
+        'x-access-token': document.cookie.split('=')[1]
       }
     })
     if (data) {

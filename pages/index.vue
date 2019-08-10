@@ -151,7 +151,7 @@ export default {
     async updateAuthor(row) {
       console.log(row)
       const author = await this.$axios.$get(
-        `http://localhost/authors/${row.authorId}`
+        `/user/${row.authorId}`
       )
       this.currentAuthor = author
     }
