@@ -105,7 +105,7 @@ export default {
         `/users/${document.cookie.split(';')[1].split('=')[1]}`,
         { newPassword: this.password }
       )
-      this.user = data
+      window.location.href = '/account'
     }
   }
 }

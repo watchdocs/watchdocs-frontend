@@ -1,5 +1,5 @@
 <template>
-  <v-container >
+  <v-container>
     <h1 class="display-1">Documents</h1>
     <h4 class="subtitle-1">Your Files</h4>
     <br />
@@ -58,7 +58,7 @@ export default {
         { text: 'Modified Date', value: 'updated_at' },
         { text: 'Author', value: 'author' }
       ],
-      currentAuthor: {},
+      currentAuthor: null,
       currentDirectory: [],
       login: false
     }
@@ -72,12 +72,15 @@ export default {
   },
   methods: {
     async move(row) {
-      window.location.href = '/docs/' + row._id
+      // window.location.href = '/docs/' + row._id
     },
     async updateAuthor(row) {
-      console.log(row)
-      const data = await this.$axios.$get(`/user/${row.authorId}`)
-      this.currentAuthor = author
+      const data = await this.$axios.$get(`/users/${row.author}`)
+      this.currentAuthor = {
+        ...data,
+        id: data.userID,
+        name: data.username
+      }
     }
   }
 }
