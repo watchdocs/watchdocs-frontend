@@ -13,7 +13,11 @@ export default {
 
   modules: ['@nuxtjs/axios', '@nuxtjs/pwa'],
 
-  devModules: ['@nuxtjs/eslint-module', '@nuxtjs/vuetify'],
+  devModules: ['@nuxtjs/vuetify'],
+
+  axios: {
+    baseURL: 'http://172.30.1.60:3000/'
+  },
 
   manifest: {
     name: NAME,
@@ -54,6 +58,11 @@ export default {
   mode: 'universal',
 
   router: { base: BASE_URL },
+
+  server: {
+    host: '0.0.0.0',
+    port: 80
+  },
 
   build: {
     extractCSS: true

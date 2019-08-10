@@ -2,11 +2,10 @@
   <v-form>
     <v-container>
       <v-layout wrap justify-center>
-        <v-flex class="text-center">
+        <v-flex class="text-center" xs12 sm6>
           <div id="title">
             <strong>
-              <v-icon id="icon_key">mdi-account-key</v-icon>
-              로그인
+              <v-icon id="icon_key">mdi-account-key</v-icon>로그인
             </strong>
           </div>
 
@@ -16,7 +15,7 @@
 
           <v-flex>
             <v-text-field
-              v-model="title"
+              v-model="id"
               :rules="rules"
               counter="25"
               hint="ID"
@@ -36,7 +35,7 @@
               class="psw_text"
             ></v-text-field>
 
-            <v-btn block color="secondary" dark>로그인</v-btn>
+            <v-btn block color="secondary" dark @click="login">로그인</v-btn>
           </v-flex>
         </v-flex>
       </v-layout>
@@ -74,11 +73,24 @@ export default {
       show2: true,
       show3: false,
       show4: false,
+      id: '',
       password: '',
       rules: {
         required: (value) => !!value || 'Required.'
         // min: v => v.length >= 8 || 'Min 8 characters',
         // emailMatch: () => ('The email and password you entered don\'t match'),
+      }
+    }
+  },
+  methods: {
+    async login() {
+      const { data } = await this.$axios.$post('/auth/login', {
+        userID: this.id,
+        password: this.password
+      })
+      if (data) {
+        // User.token = data
+        window.location.href = '/'
       }
     }
   }

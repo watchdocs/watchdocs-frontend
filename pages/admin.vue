@@ -3,10 +3,60 @@
     <v-layout column justify-center align-center>
       <v-flex xs12 sm8 md6>
         <div id="title">
-          <strong> <v-icon id="icon_account">mdi-account</v-icon>Admin </strong>
+          <strong>
+            <v-icon id="icon_account">mdi-account</v-icon>Admin
+          </strong>
+          <v-dialog v-model="dialog" persistent max-width="600px">
+            <template v-slot:activator="{ on }">
+              <v-btn color="primary" dark v-on="on">Add</v-btn>
+            </template>
+            <v-card>
+              <v-card-title>
+                <span class="headline">User Profile</span>
+              </v-card-title>
+              <v-card-text>
+                <v-container grid-list-md>
+                  <v-layout wrap>
+                    <v-flex xs12>
+                      <v-text-field v-model="userId" label="ID" required></v-text-field>
+                    </v-flex>
+                    <v-flex xs12>
+                      <v-text-field v-model="userName" label="Name" required></v-text-field>
+                    </v-flex>
+                    <v-flex xs12>
+                      <v-text-field v-model="userEmail" label="Email" required></v-text-field>
+                    </v-flex>
+                    <v-flex xs12>
+                      <v-text-field v-model="userDepartment" label="Department" required></v-text-field>
+                    </v-flex>
+                    <v-flex xs12>
+                      <v-text-field v-model="userPosition" label="Position" required></v-text-field>
+                    </v-flex>
+                    <v-flex xs12>
+                      <v-text-field
+                        v-model="userPassword"
+                        label="Password"
+                        type="password"
+                        required
+                      ></v-text-field>
+                    </v-flex>
+                    <v-flex xs12>
+                      <v-switch v-model="userAdmin" color="primary" label="Admin" />
+                    </v-flex>
+                  </v-layout>
+                </v-container>
+                <small>*indicates required field</small>
+              </v-card-text>
+              <v-card-actions>
+                <v-spacer></v-spacer>
+                <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+                <v-btn color="blue darken-1" text @click="createUser">Save</v-btn>
+              </v-card-actions>
+            </v-card>
+          </v-dialog>
         </div>
 
-        <v-data-table :headers="headers" :items="users">
+        <v-data-table v-if="users" :headers="headers" :items="users">
           <template v-slot:item.name="props">
             <v-edit-dialog
               :return-value.sync="props.item.name"
@@ -108,6 +158,7 @@
 export default {
   data() {
     return {
+      dialog: false,
       snack: false,
       snackColor: '',
       snackText: '',
@@ -121,26 +172,25 @@ export default {
         { text: 'Password', value: 'password' },
         { text: 'Admin', value: 'admin' }
       ],
-      users: [
-        {
-          id: 'my-id',
-          name: 'My Name',
-          email: 'email',
-          department: 'Dept',
-          position: 'Pos',
-          password: 'PW',
-          admin: true
-        },
-        {
-          id: 'my-id',
-          name: 'My Name',
-          email: 'email',
-          department: 'Dept',
-          position: 'Pos',
-          password: 'PW',
-          admin: false
-        }
-      ]
+      userId: '',
+      userName: '',
+      userEmail: '',
+      userDepartment: '',
+      userPosition: '',
+      userPassword: '',
+      userAdmin: false,
+      users: []
+    }
+  },
+  async created() {
+    console.log('User.token', User.token)
+    const { data } = await this.$axios.$get('/users', {
+      headers: {
+        'x-access-token': User.token
+      }
+    })
+    if (data) {
+      this.users = data
     }
   },
   methods: {
@@ -148,7 +198,7 @@ export default {
       this.snack = true
       this.snackColor = 'success'
       this.snackText = 'Data saved'
-      this.$axios.$post(`/users/${id}?data=${'content'}`)
+      this.$axios.$post(`/users/${'id'}?data=${'content'}`)
     },
     cancel() {
       this.snack = true
@@ -163,8 +213,20 @@ export default {
     close() {
       console.log('Dialog closed')
     },
+    async createUser() {
+      await this.$axios.$post('/users', {
+        userID: this.userId,
+        username: this.userName,
+        email: this.userEmail,
+        department: this.userDepartment,
+        position: this.userPosition,
+        password: this.userPassword,
+        admin: this.userAdmin
+      })
+      this.dialog = false
+    },
     resetPassword() {
-      this.$axios.$post(`/users/${id}?newPassword=1234`)
+      this.$axios.$post(`/users/${'id'}?newPassword=1234`)
     }
   }
 }
