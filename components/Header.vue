@@ -19,11 +19,12 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn icon to="/upload" nuxt>
+    <v-btn icon v-if="login" to="/upload" nuxt>
       <v-icon>mdi-upload</v-icon>
     </v-btn>
+    <div v-else></div>
 
-    <v-btn v-if="true" icon to="/account" nuxt>
+    <v-btn v-if="login" icon to="/account" nuxt>
       <v-icon>mdi-account-circle</v-icon>
     </v-btn>
     <v-btn v-else style="margin-right:40px;" to="/login" nuxt>Login</v-btn>
@@ -37,6 +38,9 @@ export default {
   name: 'Header',
   components: {
     WatchdocsLogo
+  },
+  computed: {
+    login: document.cookie.includes("token")
   }
 }
 </script>
