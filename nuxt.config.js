@@ -55,7 +55,7 @@ export default {
     }
   },
 
-  mode: 'universal',
+  mode: 'spa',
 
   router: { base: BASE_URL },
 

@@ -5,8 +5,7 @@
         <v-flex class="text-center">
           <div id="title">
             <strong>
-              <v-icon id="icon_key">mdi-account-key</v-icon>
-              비밀번호 변경
+              <v-icon id="icon_key">mdi-account-key</v-icon>비밀번호 변경
             </strong>
           </div>
 
@@ -16,8 +15,7 @@
         </v-flex>
         <v-flex xs12 sm6 class="psw">
           <v-text-field
-            v-model="password"
-            :rules="[rules.required, rules.min]"
+            :rules="[rules.required]"
             :type="show1 ? 'text' : 'password'"
             name="input-10-1"
             label="기존 비밀번호를 입력하세요."
@@ -28,7 +26,7 @@
 
           <v-text-field
             v-model="password"
-            :rules="[rules.required, rules.min]"
+            :rules="[rules.required]"
             :type="show1 ? 'text' : 'password'"
             name="input-10-1"
             label="신규 비밀번호를 입력하세요."
@@ -38,8 +36,7 @@
           ></v-text-field>
 
           <v-text-field
-            v-model="password"
-            :rules="[rules.required, rules.min]"
+            :rules="[rules.required]"
             :type="show1 ? 'text' : 'password'"
             name="input-10-1"
             label="신규 비밀번호를 다시 입력하세요."
@@ -48,7 +45,7 @@
             class="psw_text"
           ></v-text-field>
 
-          <v-btn block color="secondary" dark>비밀번호 변경</v-btn>
+          <v-btn block color="secondary" dark @click="change">비밀번호 변경</v-btn>
         </v-flex>
       </v-layout>
     </v-container>
@@ -91,6 +88,24 @@ export default {
         // min: v => v.length >= 8 || 'Min 8 characters',
         // emailMatch: () => ('The email and password you entered don\'t match'),
       }
+    }
+  },
+  async created() {
+    const { data } = await this.$axios.$get('/auth/me', {
+      headers: {
+        'x-access-token': document.cookie.split(';')[0].split('=')[1]
+      }
+    })
+    this.user = data
+  },
+  methods: {
+    change() {
+      this.password
+      this.$axios.$put(
+        `/users/${document.cookie.split(';')[1].split('=')[1]}`,
+        { newPassword: this.password }
+      )
+      this.user = data
     }
   }
 }

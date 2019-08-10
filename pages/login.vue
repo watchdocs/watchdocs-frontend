@@ -83,7 +83,8 @@ export default {
         password: this.password
       })
       if (data) {
-        document.cookie = 'token='+data
+        document.cookie = 'token='+data[0]
+        document.cookie = 'id='+data[1]
         window.location.href = '/'
       }
     }

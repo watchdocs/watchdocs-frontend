@@ -57,7 +57,7 @@
         </div>
 
         <v-data-table v-if="users" :headers="headers" :items="users">
-          <template v-slot:item.name="props">
+          <!-- <template v-slot:item.name="props">
             <v-edit-dialog
               :return-value.sync="props.item.name"
               @save="save"
@@ -136,12 +136,12 @@
                 ></v-text-field>
               </template>
             </v-edit-dialog>
-          </template>
+          </template> -->
           <template v-slot:item.password="props">
             <v-btn depressed @click="resetPassword">Reset</v-btn>
           </template>
           <template v-slot:item.admin="props">
-            <v-switch v-model="props.item.admin" color="primary" />
+            <v-switch v-model="props.item.admin" color="primary" readonly />
           </template>
         </v-data-table>
 
@@ -185,11 +185,17 @@ export default {
   async created() {
     const { data } = await this.$axios.$get('/users', {
       headers: {
-        'x-access-token': document.cookie.split('=')[1]
+        'x-access-token': document.cookie.split(';')[0].split('=')[1]
       }
     })
     if (data) {
-      this.users = data
+      this.users = data.map(user => {
+        return {
+          ...user,
+          id: user.userID,
+          name: user.username
+        }
+      })
     }
   },
   methods: {
@@ -197,7 +203,6 @@ export default {
       this.snack = true
       this.snackColor = 'success'
       this.snackText = 'Data saved'
-      this.$axios.$post(`/users/${'id'}?data=${'content'}`)
     },
     cancel() {
       this.snack = true
@@ -225,7 +230,7 @@ export default {
       this.dialog = false
     },
     resetPassword() {
-      this.$axios.$post(`/users/${'id'}?newPassword=1234`)
+      this.$axios.$put(`/users/${document.cookie.split(';')[1].split('=')[1]}`, {newPassword:1234})
     }
   }
 }

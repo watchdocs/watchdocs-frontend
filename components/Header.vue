@@ -2,9 +2,7 @@
   <v-app-bar app clipped-left>
     <watchdocs-logo size="24px" color="black" />
     <v-toolbar-title style="width: 180px" class="ml-0 pl-4">
-      <nuxt-link to="/" style="text-decoration:none; color:black"
-        >WatchDocs</nuxt-link
-      >
+      <nuxt-link to="/" style="text-decoration:none; color:black">WatchDocs</nuxt-link>
     </v-toolbar-title>
 
     <v-text-field
@@ -39,8 +37,13 @@ export default {
   components: {
     WatchdocsLogo
   },
-  computed: {
-    login: window.document && window.document.cookie.includes("token")
+  data() {
+    return {
+      login: false
+    }
+  },
+  created() {
+    this.login = document.cookie.includes('token')
   }
 }
 </script>
