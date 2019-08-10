@@ -61,7 +61,7 @@ export default {
       user: {}
     }
   },
-  async created() {
+  async mounted() {
     const { data } = await this.$axios.$get('/auth/me', {
       headers: {
         'x-access-token': document.cookie.split(';')[0].split('=')[1]

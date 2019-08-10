@@ -113,9 +113,15 @@ export default {
         name: 'My Name',
         department: 'Develop',
         position: 'Slave'
-      }
+      },
+      data: {}
     }
-  }
+  },
+  async mounted() {
+    const page = this.$nuxt.$route.path.split('/')[2];
+    const data = await this.$axios.$get(`/documents/${page}`)
+    this.data = data
+  },
 }
 </script>
 
