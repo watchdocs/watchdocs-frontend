@@ -40,7 +40,7 @@ export default {
     WatchdocsLogo
   },
   computed: {
-    login: document.cookie.includes("token")
+    login: window.document && window.document.cookie.includes("token")
   }
 }
 </script>
