@@ -1,8 +1,8 @@
 # WATCH_DOCS
 
-> Document Management Service for Business
-
 <p align="center"><img src="./static/icon.png" width="256px" alt="Logo"></p>
+
+> Document Management Service for Business
 
 ## Demo
 
