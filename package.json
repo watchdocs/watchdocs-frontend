@@ -1,8 +1,13 @@
 {
   "name": "watchdocs",
   "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "description": "Document Management Service for Business",
+  "keywords": [
+    "vue",
+    "nuxt",
+    "waykichain",
+    "document-management"
+  ],
   "scripts": {
     "build": "nuxt build",
     "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup",
@@ -18,14 +23,14 @@
     "nuxt": "^2.8.1"
   },
   "devDependencies": {
-    "@nuxtjs/eslint-config": "^1.0.1",
+    "@nuxtjs/eslint-config": "^1.1.2",
     "@nuxtjs/eslint-module": "^1.0.0",
     "@nuxtjs/vuetify": "^1.2.1",
     "babel-eslint": "^10.0.2",
     "eslint": "^6.1.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-nuxt": "^0.4.3",
-    "eslint-plugin-prettier": "^3.0.1",
+    "eslint-plugin-prettier": "^3.1.0",
     "prettier": "^1.18.2",
     "push-dir": "^0.4.1"
   },
@@ -34,7 +39,8 @@
     "url": "git+https://github.com/watchdocs/client.git"
   },
   "contributors": [
-    "Seungjae Park <astro.psj@gmail.com>"
+    "Seungjae Park <astro.psj@gmail.com>",
+    "SeungHun Han <shhan730@gmail.com>"
   ],
   "license": "MIT",
   "bugs": {
