@@ -2,7 +2,9 @@
   <v-app-bar app clipped-left>
     <watchdocs-logo size="24px" color="black" />
     <v-toolbar-title style="width: 180px" class="ml-0 pl-4">
-      <nuxt-link to="/" style="text-decoration:none; color:black">WatchDocs</nuxt-link>
+      <nuxt-link to="/" style="text-decoration:none; color:black"
+        >WatchDocs</nuxt-link
+      >
     </v-toolbar-title>
 
     <v-text-field
@@ -17,7 +19,7 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn icon v-if="login" to="/upload" nuxt>
+    <v-btn v-if="login" icon to="/upload" nuxt>
       <v-icon>mdi-upload</v-icon>
     </v-btn>
     <div v-else></div>

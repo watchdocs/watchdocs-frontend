@@ -16,7 +16,7 @@ export default {
   devModules: ['@nuxtjs/vuetify'],
 
   axios: {
-    baseURL: 'http://172.30.1.60:3000/'
+    baseURL: 'http://172.30.1.5:3000/'
   },
 
   manifest: {

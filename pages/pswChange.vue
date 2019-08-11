@@ -45,7 +45,9 @@
             class="psw_text"
           ></v-text-field>
 
-          <v-btn block color="secondary" dark @click="change">비밀번호 변경</v-btn>
+          <v-btn block color="secondary" dark @click="change"
+            >비밀번호 변경</v-btn
+          >
         </v-flex>
       </v-layout>
     </v-container>

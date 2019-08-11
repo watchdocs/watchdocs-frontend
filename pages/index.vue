@@ -5,9 +5,16 @@
     <br />
     <v-layout v-if="login">
       <v-flex xs12 md8>
-        <v-data-table class="files" :headers="headers" :items="currentDirectory" @click:row="move">
+        <v-data-table
+          class="files"
+          :headers="headers"
+          :items="currentDirectory"
+          @click:row="move"
+        >
           <template v-slot:item.author="{ item }">
-            <span @mouseover="updateAuthor(item)">{{ item.author }}</span>
+            <span class="user" @mouseover="updateAuthor(item)"
+              >[{{ item.author }}]</span
+            >
           </template>
         </v-data-table>
       </v-flex>
@@ -16,8 +23,12 @@
           <v-list-item>
             <v-list-item-avatar color="grey"></v-list-item-avatar>
             <v-list-item-content>
-              <v-list-item-title class="headline">{{ currentAuthor.name }}</v-list-item-title>
-              <v-list-item-subtitle>@{{ currentAuthor.id }}</v-list-item-subtitle>
+              <v-list-item-title class="headline">{{
+                currentAuthor.name
+              }}</v-list-item-title>
+              <v-list-item-subtitle
+                >@{{ currentAuthor.id }}</v-list-item-subtitle
+              >
             </v-list-item-content>
           </v-list-item>
           <v-list two-line>
@@ -28,7 +39,9 @@
                 </v-list-item-icon>
                 <v-list-item-content>
                   <v-list-item-title>Department</v-list-item-title>
-                  <v-list-item-subtitle>{{ currentAuthor.department }}</v-list-item-subtitle>
+                  <v-list-item-subtitle>{{
+                    currentAuthor.department
+                  }}</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
               <v-list-item>
@@ -37,7 +50,9 @@
                 </v-list-item-icon>
                 <v-list-item-content>
                   <v-list-item-title>Position</v-list-item-title>
-                  <v-list-item-subtitle>{{ currentAuthor.position }}</v-list-item-subtitle>
+                  <v-list-item-subtitle>{{
+                    currentAuthor.position
+                  }}</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
             </v-list-item-group>
@@ -85,3 +100,9 @@ export default {
   }
 }
 </script>
+
+<style>
+.user {
+  color: #632a7e;
+}
+</style>

@@ -11,44 +11,44 @@
         <div class="infoCard">
           <v-card width="750px" class="mx-auto">
             <v-card-title class="card_name">이름</v-card-title>
-            <v-card-text class="card_info">{{user.username}}</v-card-text>
+            <v-card-text class="card_info">{{ user.username }}</v-card-text>
           </v-card>
         </div>
 
         <div class="infoCard">
           <v-card width="750px" class="mx-auto">
             <v-card-title class="card_name">사용자 ID</v-card-title>
-            <v-card-text class="card_info">{{user.userID}}</v-card-text>
+            <v-card-text class="card_info">{{ user.userID }}</v-card-text>
           </v-card>
         </div>
 
         <div class="infoCard">
           <v-card width="750px" class="mx-auto">
             <v-card-title class="card_name">사용자 이메일</v-card-title>
-            <v-card-text class="card_info">{{user.email}}</v-card-text>
+            <v-card-text class="card_info">{{ user.email }}</v-card-text>
           </v-card>
         </div>
 
         <div class="infoCard">
           <v-card width="750px" class="mx-auto">
             <v-card-title class="card_name">사용자 부서</v-card-title>
-            <v-card-text class="card_info">{{user.department}}</v-card-text>
+            <v-card-text class="card_info">{{ user.department }}</v-card-text>
           </v-card>
         </div>
 
         <div class="infoCard">
           <v-card width="750px" class="mx-auto">
             <v-card-title class="card_name">사용자 직책</v-card-title>
-            <v-card-text class="card_info">{{user.position}}</v-card-text>
+            <v-card-text class="card_info">{{ user.position }}</v-card-text>
           </v-card>
         </div>
 
-        <div class="infoCard">
+        <!-- <div class="infoCard">
           <v-card width="750px" class="mx-auto">
             <v-icon id="icon_key">mdi-account-key</v-icon>
             <v-btn id="btn_password" text to="/pswChange" nuxt>비밀번호 변경</v-btn>
           </v-card>
-        </div>
+        </div> -->
       </v-flex>
     </v-layout>
   </v-container>

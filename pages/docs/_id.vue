@@ -118,10 +118,10 @@ export default {
     }
   },
   async mounted() {
-    const page = this.$nuxt.$route.path.split('/')[2];
+    const page = this.$nuxt.$route.path.split('/')[2]
     const data = await this.$axios.$get(`/documents/${page}`)
     this.data = data
-  },
+  }
 }
 </script>
 

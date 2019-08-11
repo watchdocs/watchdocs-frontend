@@ -3,9 +3,7 @@
     <v-layout column justify-center align-center>
       <v-flex xs12 sm8 md6>
         <div id="title">
-          <strong>
-            <v-icon id="icon_account">mdi-account</v-icon>Admin
-          </strong>
+          <strong> <v-icon id="icon_account">mdi-account</v-icon>Admin </strong>
           <v-dialog v-model="dialog" persistent max-width="600px">
             <template v-slot:activator="{ on }">
               <v-btn color="primary" dark v-on="on">Add</v-btn>
@@ -18,19 +16,39 @@
                 <v-container grid-list-md>
                   <v-layout wrap>
                     <v-flex xs12>
-                      <v-text-field v-model="userId" label="ID" required></v-text-field>
+                      <v-text-field
+                        v-model="userId"
+                        label="ID"
+                        required
+                      ></v-text-field>
                     </v-flex>
                     <v-flex xs12>
-                      <v-text-field v-model="userName" label="Name" required></v-text-field>
+                      <v-text-field
+                        v-model="userName"
+                        label="Name"
+                        required
+                      ></v-text-field>
                     </v-flex>
                     <v-flex xs12>
-                      <v-text-field v-model="userEmail" label="Email" required></v-text-field>
+                      <v-text-field
+                        v-model="userEmail"
+                        label="Email"
+                        required
+                      ></v-text-field>
                     </v-flex>
                     <v-flex xs12>
-                      <v-text-field v-model="userDepartment" label="Department" required></v-text-field>
+                      <v-text-field
+                        v-model="userDepartment"
+                        label="Department"
+                        required
+                      ></v-text-field>
                     </v-flex>
                     <v-flex xs12>
-                      <v-text-field v-model="userPosition" label="Position" required></v-text-field>
+                      <v-text-field
+                        v-model="userPosition"
+                        label="Position"
+                        required
+                      ></v-text-field>
                     </v-flex>
                     <v-flex xs12>
                       <v-text-field
@@ -41,7 +59,11 @@
                       ></v-text-field>
                     </v-flex>
                     <v-flex xs12>
-                      <v-switch v-model="userAdmin" color="primary" label="Admin" />
+                      <v-switch
+                        v-model="userAdmin"
+                        color="primary"
+                        label="Admin"
+                      />
                     </v-flex>
                   </v-layout>
                 </v-container>
@@ -49,8 +71,12 @@
               </v-card-text>
               <v-card-actions>
                 <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-                <v-btn color="blue darken-1" text @click="createUser">Save</v-btn>
+                <v-btn color="blue darken-1" text @click="dialog = false"
+                  >Close</v-btn
+                >
+                <v-btn color="blue darken-1" text @click="createUser"
+                  >Save</v-btn
+                >
               </v-card-actions>
             </v-card>
           </v-dialog>
@@ -189,7 +215,7 @@ export default {
       }
     })
     if (data) {
-      this.users = data.map(user => {
+      this.users = data.map((user) => {
         return {
           ...user,
           id: user.userID,
@@ -230,7 +256,10 @@ export default {
       this.dialog = false
     },
     resetPassword() {
-      this.$axios.$put(`/users/${document.cookie.split(';')[1].split('=')[1]}`, {newPassword:1234})
+      this.$axios.$put(
+        `/users/${document.cookie.split(';')[1].split('=')[1]}`,
+        { newPassword: 1234 }
+      )
     }
   }
 }
